@@ -3,4 +3,8 @@
     <dimen name="elevation_all">4dp</dimen>
 
     <dimen name="height_toolbar">80dp</dimen>
+
+    <!-- Bottom navigation -->
+    <dimen name="icon_size_bottom_nav">36dp</dimen>
+    <dimen name="height_bottom_nav">56dp</dimen>
 </resources>

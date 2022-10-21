@@ -3,8 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/bottom_nav_item_selector.xml" value="0.1" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/ic_nav_cart_selector.xml" value="0.1" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/ic_nav_catalog_selector.xml" value="0.1" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/ic_nav_home_selector.xml" value="0.1" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/ic_nav_profile_selector.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout-v24/activity_main.xml" value="0.2" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/activity_main.xml" value="0.15040650406504066" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_cart.xml" value="0.1" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_catalog.xml" value="0.11322188449848024" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_profile.xml" value="0.11322188449848024" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1638888888888889" />
       </map>
     </option>
   </component>
