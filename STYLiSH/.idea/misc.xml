@@ -14,6 +14,9 @@
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_catalog.xml" value="0.11322188449848024" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_profile.xml" value="0.11322188449848024" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_home_collage.xml" value="0.264" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_home_full.xml" value="0.264" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_home_title.xml" value="0.264" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1638888888888889" />
       </map>
     </option>
