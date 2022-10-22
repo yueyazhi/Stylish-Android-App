@@ -21,14 +21,6 @@ class HomeAdapter() : ListAdapter<HomeItem,
             binding.executePendingBindings()
         }
 
-        companion object {
-            fun from(parent: ViewGroup): TitleViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemHomeTitleBinding.inflate(layoutInflater, parent, false)
-                return TitleViewHolder(binding)
-            }
-        }
-
     }
 
     class FullProductViewHolder(private val binding: ItemHomeFullBinding) :
@@ -39,14 +31,6 @@ class HomeAdapter() : ListAdapter<HomeItem,
             binding.executePendingBindings()
         }
 
-        companion object {
-            fun from(parent: ViewGroup): FullProductViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemHomeFullBinding.inflate(layoutInflater, parent, false)
-                return FullProductViewHolder(binding)
-            }
-        }
-
     }
 
     class CollageProductViewHolder(private val binding: ItemHomeCollageBinding) :
@@ -55,14 +39,6 @@ class HomeAdapter() : ListAdapter<HomeItem,
         fun bind(product: Product) {
             binding.product = product
             binding.executePendingBindings()
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): CollageProductViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemHomeCollageBinding.inflate(layoutInflater, parent, false)
-                return CollageProductViewHolder(binding)
-            }
         }
 
     }
@@ -83,9 +59,21 @@ class HomeAdapter() : ListAdapter<HomeItem,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            ITEM_VIEW_TYPE_TITLE -> TitleViewHolder.from(parent)
-            ITEM_VIEW_TYPE_PRODUCT_FULL -> FullProductViewHolder.from(parent)
-            ITEM_VIEW_TYPE_PRODUCT_COLLAGE -> CollageProductViewHolder.from(parent)
+            ITEM_VIEW_TYPE_TITLE -> TitleViewHolder(
+                ItemHomeTitleBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
+            ITEM_VIEW_TYPE_PRODUCT_FULL -> FullProductViewHolder(
+                ItemHomeFullBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
+            ITEM_VIEW_TYPE_PRODUCT_COLLAGE -> CollageProductViewHolder(
+                ItemHomeCollageBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                )
+            )
             else -> throw ClassCastException("Unknown viewType $viewType")
         }
     }
@@ -111,7 +99,6 @@ class HomeAdapter() : ListAdapter<HomeItem,
             is HomeItem.CollageProduct -> ITEM_VIEW_TYPE_PRODUCT_COLLAGE
         }
     }
-
 
 
 }

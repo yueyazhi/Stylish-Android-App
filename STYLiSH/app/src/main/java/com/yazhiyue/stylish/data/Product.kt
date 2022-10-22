@@ -1,13 +1,21 @@
 package com.yazhiyue.stylish.data
 
+import com.squareup.moshi.Json
 
-class Product (
+data class Product(
     val id: Long,
+    val category: String,
     val title: String,
-    val description :String,
-    val image_one: Int,
-    val image_two: Int? = null,
-    val image_three: Int? = null,
-    val image_four: Int? = null
-
+    val description: String,
+    val price: Long,
+    val texture: String,
+    val wash: String,
+    val place: String,
+    val note: String,
+    val story: String,
+    val colors: List<Color>,
+    val sizes: List<String>,
+    val variants: List<Variant>,
+    @Json(name = "main_image") val mainImage: String,
+    val images: List<String>
 )

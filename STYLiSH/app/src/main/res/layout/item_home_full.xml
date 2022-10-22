@@ -24,7 +24,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
-            app:imageResource="@{product.image_one}"
+            app:imageUrl="@{product.mainImage}"
             app:layout_constraintBottom_toTopOf="@+id/text_home_title"
             app:layout_constraintDimensionRatio="2:1"
             app:layout_constraintEnd_toEndOf="parent"
