@@ -1,9 +1,11 @@
 package com.yazhiyue.stylish.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yazhiyue.stylish.data.HomeItem
+import com.yazhiyue.stylish.network.LoadApiStatus
 import com.yazhiyue.stylish.network.StylishApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +16,21 @@ class HomeViewModel : ViewModel() {
 
     private val _homeItems = MutableLiveData<List<HomeItem>>((emptyList()))
 
-    val homeItems: LiveData<List<HomeItem>>
+    val homeItems: MutableLiveData<List<HomeItem>>
         get() = _homeItems
+
+    // stores the status of the most recent request
+    private val _status = MutableLiveData<LoadApiStatus>()
+
+    val status: LiveData<LoadApiStatus>
+        get() = _status
+
+    // status for the loading icon of swl
+    private val _refreshStatus = MutableLiveData<Boolean>()
+
+    val refreshStatus: LiveData<Boolean>
+        get() = _refreshStatus
+
 
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
@@ -29,28 +44,46 @@ class HomeViewModel : ViewModel() {
     }
 
     init {
-        getMarketingHostsResult()
+        getMarketingHotsResult()
     }
 
-    private fun getMarketingHostsResult() {
+    private fun getMarketingHotsResult() {
         coroutineScope.launch {
-            val result =
-                StylishApi.retrofitService.getMarketingHots()
+            _status.value = LoadApiStatus.LOADING
 
-            for (data in result.hotsList!!) {
-                _homeItems.value = _homeItems.value?.plus(HomeItem.Title(data.title))
+            try {
+                val result =
+                    StylishApi.retrofitService.getMarketingHots()
 
-                val products = data.products
+                _status.value = LoadApiStatus.DONE
 
-                for (product in products) {
-                    if (products.indexOf(product) % 2 == 0) {
-                        _homeItems.value = _homeItems.value?.plus(HomeItem.FullProduct(product))
-                    } else {
-                        _homeItems.value = _homeItems.value?.plus(HomeItem.CollageProduct(product))
+                for (data in result.hotsList!!) {
+                    _homeItems.value = _homeItems.value?.plus(HomeItem.Title(data.title))
+
+                    val products = data.products
+
+                    for (product in products) {
+                        if (products.indexOf(product) % 2 == 0) {
+                            _homeItems.value = _homeItems.value?.plus(HomeItem.FullProduct(product))
+                        } else {
+                            _homeItems.value =
+                                _homeItems.value?.plus(HomeItem.CollageProduct(product))
+                        }
                     }
                 }
+            } catch (e: Exception) {
+                _status.value = LoadApiStatus.ERROR
+                Log.i("getHotsResultError", "$e.message")
+                _homeItems.value = emptyList()
             }
+            _refreshStatus.value = false
         }
 
+    }
+
+    fun refresh() {
+        if (status.value != LoadApiStatus.LOADING) {
+            getMarketingHotsResult()
+        }
     }
 }
