@@ -1,55 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <data>
+
+        <import type="com.yazhiyue.stylish.util.CurrentFragmentType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.yazhiyue.stylish.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_toolbar"
-        android:background="@color/white"
-        android:elevation="@dimen/elevation_all"
-        app:buttonGravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/icons_24px_drawer">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/image_logo02" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_toolbar"
+            android:background="@color/white"
+            android:elevation="@dimen/elevation_all"
+            app:buttonGravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/icons_24px_drawer">
 
-    </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="@{viewModel.currentFragmentType.value}"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="20sp"
+                android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.GONE : View.VISIBLE}"
+                tools:text="Stylish"
+                tools:visibility="visible" />
 
-    <fragment
-        android:id="@+id/my_nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:navGraph="@navigation/navigation" />
+            <ImageView
+                android:id="@+id/image_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/image_logo02"
+                android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}"
+                tools:visibility="gone" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_bottom_nav"
-        android:elevation="@dimen/elevation_all"
-        app:itemIconSize="@dimen/icon_size_bottom_nav"
-        app:itemIconTint="@drawable/bottom_nav_item_selector"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        </androidx.appcompat.widget.Toolbar>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <fragment
+            android:id="@+id/my_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:navGraph="@navigation/navigation" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_bottom_nav"
+            android:elevation="@dimen/elevation_all"
+            app:itemIconSize="@dimen/icon_size_bottom_nav"
+            app:itemIconTint="@drawable/bottom_nav_item_selector"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

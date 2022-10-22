@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">STYLiSH</string>
+
+    <!-- Profile -->
+    <string name="profile_default_name">Name</string>
+    <string name="profile_default_information">Hello, this is my profile</string>
+    <string name="profile_order_title">我的訂單</string>
+    <string name="view_all">查看全部</string>
+    <string name="awaiting_payment">待付款</string>
+    <string name="awaiting_shipment">待出貨</string>
+    <string name="shipped">待簽收</string>
+    <string name="awaiting_review">待評價</string>
+    <string name="exchange">退換貨</string>
+    <string name="profile_service_title">更多服務</string>
+    <string name="starred">收藏</string>
+    <string name="notification">貨到通知</string>
+    <string name="refunded">帳戶退款</string>
+    <string name="address">地址</string>
+    <string name="customer_service">客服訊息</string>
+    <string name="system_feedback">系統回饋</string>
+    <string name="register_phone">手機綁定</string>
+    <string name="settings">設定</string>
+
 </resources>

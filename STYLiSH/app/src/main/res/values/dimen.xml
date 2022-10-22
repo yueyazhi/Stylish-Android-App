@@ -7,4 +7,9 @@
     <!-- Bottom navigation -->
     <dimen name="icon_size_bottom_nav">36dp</dimen>
     <dimen name="height_bottom_nav">56dp</dimen>
+
+    <!-- Profile  -->
+    <dimen name="height_profile_header">92dp</dimen>
+    <dimen name="radius_profile_avatar">60dp</dimen>
+
 </resources>

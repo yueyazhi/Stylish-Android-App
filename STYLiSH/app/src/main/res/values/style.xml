@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ProfileTitle">
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/black_3f3a3a</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ProfileButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">51dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/black_3f3a3a</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">bottom|center_horizontal</item>
+        <item name="android:fontFamily">@font/noto_sans</item>
+    </style>
+</resources>
