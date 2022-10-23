@@ -83,6 +83,7 @@ class HomeViewModel : ViewModel() {
 
     fun refresh() {
         if (status.value != LoadApiStatus.LOADING) {
+            _homeItems.value = emptyList()
             getMarketingHotsResult()
         }
     }
