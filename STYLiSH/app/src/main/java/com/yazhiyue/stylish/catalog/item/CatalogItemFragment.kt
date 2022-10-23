@@ -42,12 +42,27 @@ class CatalogItemFragment(private val catalogType: CatalogTypeFilter) : Fragment
         binding.recyclerCatalogItem.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if(!recyclerView.canScrollVertically(1) &&
-                    newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        viewModel.loadNextPage()
+                if (!recyclerView.canScrollVertically(1) &&
+                    newState == RecyclerView.SCROLL_STATE_IDLE
+                ) {
+                    viewModel.loadNextPage()
                 }
             }
         })
+
+        // set refresh layout
+        binding.layoutRefresh.setOnRefreshListener {
+            viewModel.refresh()
+        }
+
+        viewModel.refreshStatus.observe(
+            viewLifecycleOwner,
+            Observer {
+                it?.let {
+                    binding.layoutRefresh.isRefreshing = it
+                }
+            }
+        )
 
 
         return binding.root
