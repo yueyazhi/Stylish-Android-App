@@ -12,4 +12,7 @@
     <dimen name="height_profile_header">92dp</dimen>
     <dimen name="radius_profile_avatar">60dp</dimen>
 
+    <!-- Catalog -->
+    <dimen name="height_catalog_tab">48dp</dimen>
+
 </resources>

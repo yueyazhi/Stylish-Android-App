@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { navController: NavController, _: NavDestination, _: Bundle? ->
             viewModel.currentFragmentType.value = when (navController.currentDestination?.id) {
                 R.id.HomeFragment -> CurrentFragmentType.HOME
+                R.id.CatalogFragment -> CurrentFragmentType.CATALOG
                 R.id.ProfileFragment -> CurrentFragmentType.PROFILE
                 else -> viewModel.currentFragmentType.value
             }

@@ -7,7 +7,7 @@ data class Product(
     val category: String,
     val title: String,
     val description: String,
-    val price: Long,
+    val price: Int,
     val texture: String,
     val wash: String,
     val place: String,
