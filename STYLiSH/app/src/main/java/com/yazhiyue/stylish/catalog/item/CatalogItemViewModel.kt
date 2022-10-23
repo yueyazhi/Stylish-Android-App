@@ -1,6 +1,5 @@
 package com.yazhiyue.stylish.catalog.item
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +20,6 @@ class CatalogItemViewModel(catalogType: CatalogTypeFilter) : ViewModel() {
 
     var nextPaging: Int? = null
 
-    //decide which type of catalog would get from api
     var type = catalogType
 
     private var viewModelJob = Job()
@@ -37,7 +35,6 @@ class CatalogItemViewModel(catalogType: CatalogTypeFilter) : ViewModel() {
         getProductList()
     }
 
-    val result = mutableListOf<Product>()
 
     private fun getProductList() {
         coroutineScope.launch {
@@ -46,6 +43,12 @@ class CatalogItemViewModel(catalogType: CatalogTypeFilter) : ViewModel() {
                 StylishApi.retrofitService.getProductList(type.value, nextPaging.toString())
             _productList.value = _productList.value?.plus(result.data)
             nextPaging = result.nextPaging
+        }
+    }
+
+    fun loadNextPage() {
+        if(nextPaging != null) {
+            getProductList()
         }
     }
 
