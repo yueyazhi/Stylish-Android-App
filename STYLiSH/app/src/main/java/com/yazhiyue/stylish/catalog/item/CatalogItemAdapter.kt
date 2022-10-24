@@ -7,16 +7,21 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.yazhiyue.stylish.data.Product
 import com.yazhiyue.stylish.databinding.ItemCatalogGridBinding
+import com.yazhiyue.stylish.home.HomeAdapter
 
-class CatalogItemAdapter :
+class CatalogItemAdapter(private val onClickListener: HomeAdapter.OnClickListener) :
     ListAdapter<Product, CatalogItemAdapter.ProductViewHolder>(DiffCallback) {
 
+    class OnClickListener(val clickListener: (product: Product) -> Unit) {
+        fun onClick(product: Product) = clickListener(product)
+    }
 
     class ProductViewHolder(private var binding: ItemCatalogGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product) {
+        fun bind(product: Product, onClickListener: HomeAdapter.OnClickListener) {
             binding.product = product
+            binding.root.setOnClickListener { onClickListener.onClick(product) }
             binding.executePendingBindings()
         }
 
@@ -41,7 +46,7 @@ class CatalogItemAdapter :
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = getItem(position)
-        holder.bind(product)
+        holder.bind(product, onClickListener)
     }
 
 

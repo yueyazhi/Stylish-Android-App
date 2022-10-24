@@ -25,6 +25,7 @@
             android:layout_height="@dimen/height_toolbar"
             android:background="@color/white"
             android:elevation="@dimen/elevation_all"
+            android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.DETAIL ? View.GONE : View.VISIBLE}"
             app:buttonGravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

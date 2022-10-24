@@ -1,7 +1,6 @@
 package com.yazhiyue.stylish.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.yazhiyue.stylish.R
 import com.yazhiyue.stylish.databinding.FragmentHomeBinding
 
@@ -43,7 +43,19 @@ class HomeFragment : Fragment() {
             }
         )
 
-        binding.recyclerHome.adapter = HomeAdapter()
+        binding.recyclerHome.adapter = HomeAdapter(HomeAdapter.OnClickListener {
+            viewModel.navigateToDetail(it)
+        })
+
+        viewModel.navigateToDetail.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                // Must find the NavController from the Fragment
+                this.findNavController()
+                    .navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.onDetailNavigated()
+            }
+        })
 
 
         return binding.root

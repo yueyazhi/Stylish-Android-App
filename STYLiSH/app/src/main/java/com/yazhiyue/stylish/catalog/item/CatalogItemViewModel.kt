@@ -31,6 +31,12 @@ class CatalogItemViewModel(catalogType: CatalogTypeFilter) : ViewModel() {
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
+    // Handle navigation to detail
+    private val _navigateToDetail = MutableLiveData<Product?>()
+
+    val navigateToDetail: MutableLiveData<Product?>
+        get() = _navigateToDetail
+
     var nextPaging: Int? = null
 
     var type = catalogType
@@ -83,6 +89,14 @@ class CatalogItemViewModel(catalogType: CatalogTypeFilter) : ViewModel() {
             nextPaging = null
             getProductList()
         }
+    }
+
+    fun navigateToDetail(product: Product) {
+        _navigateToDetail.value = product
+    }
+
+    fun onDetailNavigated() {
+        _navigateToDetail.value = null
     }
 
 }

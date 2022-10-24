@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yazhiyue.stylish.data.HomeItem
+import com.yazhiyue.stylish.data.Product
 import com.yazhiyue.stylish.network.LoadApiStatus
 import com.yazhiyue.stylish.network.StylishApi
 import kotlinx.coroutines.CoroutineScope
@@ -31,6 +32,11 @@ class HomeViewModel : ViewModel() {
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
+    // Handle navigation to detail
+    private val _navigateToDetail = MutableLiveData<Product?>()
+
+    val navigateToDetail: MutableLiveData<Product?>
+        get() = _navigateToDetail
 
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
@@ -85,5 +91,13 @@ class HomeViewModel : ViewModel() {
         if (status.value != LoadApiStatus.LOADING) {
             getMarketingHotsResult()
         }
+    }
+
+    fun navigateToDetail(product: Product) {
+        _navigateToDetail.value = product
+    }
+
+    fun onDetailNavigated() {
+        _navigateToDetail.value = null
     }
 }

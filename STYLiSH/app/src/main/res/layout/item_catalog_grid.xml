@@ -49,7 +49,7 @@
             tools:text="厚實毛呢格子外套" />
 
         <TextView
-            android:id="@+id/price_text"
+            android:id="@+id/text_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

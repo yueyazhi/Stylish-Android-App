@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.yazhiyue.stylish.catalog.CatalogFragmentDirections
 import com.yazhiyue.stylish.catalog.CatalogTypeFilter
 import com.yazhiyue.stylish.databinding.FragmentCatalogItemBinding
 import com.yazhiyue.stylish.factory.CatalogItemViewModelFactory
+import com.yazhiyue.stylish.home.HomeAdapter
+import com.yazhiyue.stylish.home.HomeFragmentDirections
 
 class CatalogItemFragment(private val catalogType: CatalogTypeFilter) : Fragment() {
     override fun onCreateView(
@@ -29,7 +33,9 @@ class CatalogItemFragment(private val catalogType: CatalogTypeFilter) : Fragment
         val viewModel =
             ViewModelProvider(this, factory)[CatalogItemViewModel::class.java]
 
-        val adapter = CatalogItemAdapter()
+        val adapter = CatalogItemAdapter(HomeAdapter.OnClickListener {
+            viewModel.navigateToDetail(it)
+        })
         binding.recyclerCatalogItem.adapter = adapter
 
         viewModel.productList.observe(viewLifecycleOwner, Observer {
@@ -63,6 +69,16 @@ class CatalogItemFragment(private val catalogType: CatalogTypeFilter) : Fragment
                 }
             }
         )
+
+        viewModel.navigateToDetail.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                // Must find the NavController from the Fragment
+                this.findNavController()
+                    .navigate(CatalogFragmentDirections.actionCatalogFragmentToDetailFragment(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.onDetailNavigated()
+            }
+        })
 
 
         return binding.root

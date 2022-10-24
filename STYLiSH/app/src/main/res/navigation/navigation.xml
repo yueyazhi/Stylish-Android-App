@@ -10,6 +10,9 @@
         android:name="com.yazhiyue.stylish.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_HomeFragment_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
     </fragment>
 
     <fragment
@@ -17,6 +20,9 @@
         android:name="com.yazhiyue.stylish.catalog.CatalogFragment"
         android:label="fragment_catalog"
         tools:layout="@layout/fragment_catalog">
+        <action
+            android:id="@+id/action_CatalogFragment_to_DetailFragment"
+            app:destination="@id/DetailFragment" />
     </fragment>
 
     <fragment
@@ -31,6 +37,15 @@
         android:name="com.yazhiyue.stylish.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
+    </fragment>
+    <fragment
+        android:id="@+id/DetailFragment"
+        android:name="com.yazhiyue.stylish.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="productKey"
+            app:argType="com.yazhiyue.stylish.data.Product" />
+
     </fragment>
 
 </navigation>

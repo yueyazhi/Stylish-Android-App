@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.HomeFragment -> CurrentFragmentType.HOME
                 R.id.CatalogFragment -> CurrentFragmentType.CATALOG
                 R.id.ProfileFragment -> CurrentFragmentType.PROFILE
+                R.id.DetailFragment -> CurrentFragmentType.DETAIL
                 else -> viewModel.currentFragmentType.value
             }
         }

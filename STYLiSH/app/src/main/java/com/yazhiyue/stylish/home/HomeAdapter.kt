@@ -10,8 +10,12 @@ import com.yazhiyue.stylish.data.Product
 import com.yazhiyue.stylish.databinding.*
 
 
-class HomeAdapter() : ListAdapter<HomeItem,
+class HomeAdapter(private val onClickListener: OnClickListener) : ListAdapter<HomeItem,
         RecyclerView.ViewHolder>(DiffCallback) {
+
+    class OnClickListener(val clickListener: (product: Product) -> Unit) {
+        fun onClick(product: Product) = clickListener(product)
+    }
 
     class TitleViewHolder(private val binding: ItemHomeTitleBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -26,8 +30,9 @@ class HomeAdapter() : ListAdapter<HomeItem,
     class FullProductViewHolder(private val binding: ItemHomeFullBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product) {
+        fun bind(product: Product, onClickListener: OnClickListener) {
             binding.product = product
+            binding.root.setOnClickListener { onClickListener.onClick(product) }
             binding.executePendingBindings()
         }
 
@@ -36,8 +41,9 @@ class HomeAdapter() : ListAdapter<HomeItem,
     class CollageProductViewHolder(private val binding: ItemHomeCollageBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product) {
+        fun bind(product: Product, onClickListener: OnClickListener) {
             binding.product = product
+            binding.root.setOnClickListener { onClickListener.onClick(product) }
             binding.executePendingBindings()
         }
 
@@ -84,10 +90,10 @@ class HomeAdapter() : ListAdapter<HomeItem,
                 holder.bind((getItem(position) as HomeItem.Title).title)
             }
             is FullProductViewHolder -> {
-                holder.bind((getItem(position) as HomeItem.FullProduct).product)
+                holder.bind((getItem(position) as HomeItem.FullProduct).product, onClickListener)
             }
             is CollageProductViewHolder -> {
-                holder.bind((getItem(position) as HomeItem.CollageProduct).product)
+                holder.bind((getItem(position) as HomeItem.CollageProduct).product, onClickListener)
             }
         }
     }
