@@ -62,6 +62,21 @@ class DetailFragment : Fragment() {
             }
         )
 
+        // Handle navigation to Add2cart
+        viewModel.navigateToAdd2cart.observe(
+            viewLifecycleOwner,
+            Observer {
+                it?.let {
+                    findNavController().navigate(
+                        DetailFragmentDirections.actionDetailFragmentToAdd2cartDialog(
+                            it
+                        )
+                    )
+                    viewModel.onAdd2cartNavigated()
+                }
+            }
+        )
+
 
         return binding.root
     }

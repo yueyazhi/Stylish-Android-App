@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="ProfileTitle">
         <item name="android:fontFamily">@font/noto_sans_bold</item>
         <item name="android:maxLines">1</item>
@@ -35,5 +36,18 @@
         <item name="android:letterSpacing">0.15</item>
         <item name="android:textColor">@color/black_3f3a3a</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Add2Cart Bottom Sheet Dialog Theme -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModelStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <!-- Add2Cart Bottom Sheet Dialog Style -->
+    <style name="AppModelStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_dialog_corner</item>
     </style>
 </resources>

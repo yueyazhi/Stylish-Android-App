@@ -390,6 +390,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@color/black_3f3a3a"
+                android:onClick="@{() -> viewModel.navigateToAdd2cart(viewModel.product)}"
                 android:text="@string/add2cart"
                 android:textColor="@color/white"
                 android:textSize="16sp"

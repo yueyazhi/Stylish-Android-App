@@ -34,4 +34,7 @@
     <string name="select_size">選擇尺寸</string>
     <string name="select_amount">選擇數量</string>
     <string name="stock_not_enough">庫存不足</string>
+
+    <!-- IMessage Dialog -->
+    <string name="add_success">加入成功</string>
 </resources>

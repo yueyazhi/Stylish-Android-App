@@ -20,6 +20,12 @@ class DetailViewModel(product: Product) : ViewModel() {
     val leaveDetail: LiveData<Boolean>
         get() = _leaveDetail
 
+    // Handle navigation to Add2cart
+    private val _navigateToAdd2cart = MutableLiveData<Product?>()
+
+    val navigateToAdd2cart: LiveData<Product?>
+        get() = _navigateToAdd2cart
+
     val productSizesText =
         when (_product.value?.sizes?.size) {
             1 -> _product.value!!.sizes.first()
@@ -31,7 +37,7 @@ class DetailViewModel(product: Product) : ViewModel() {
 
     private fun getStocks(): Int {
         var stocks = 0
-        for(variants in product.value!!.variants) {
+        for (variants in product.value!!.variants) {
             stocks += variants.stock
         }
         return stocks
@@ -39,5 +45,13 @@ class DetailViewModel(product: Product) : ViewModel() {
 
     fun leaveDetail() {
         _leaveDetail.value = true
+    }
+
+    fun navigateToAdd2cart(product: Product) {
+        _navigateToAdd2cart.value = product
+    }
+
+    fun onAdd2cartNavigated() {
+        _navigateToAdd2cart.value = null
     }
 }

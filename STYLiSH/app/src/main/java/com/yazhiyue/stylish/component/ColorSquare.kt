@@ -23,31 +23,23 @@ class ColorSquare(
         if (hasBorder) {
             paint.color = Color.BLACK
             paint.style = Paint.Style.STROKE
-            paint.strokeWidth = context.resources
-                .getDimensionPixelSize(R.dimen.edge_detail_color).toFloat()
+           /* paint.strokeWidth = context.resources
+                .getDimensionPixelSize(R.dimen.edge_detail_color).toFloat()*/
             canvas.drawRect(0f, 0f, this.width, this.height, paint)
         }
 
         if (isSelected) {
-            if (colorCode.contains("FFFFFF", true)) {
-                paint.color = Color.BLACK
-                paint.style = Paint.Style.STROKE
-                paint.strokeWidth = context.resources
-                    .getDimensionPixelSize(R.dimen.edge_add2cart_color_white).toFloat()
-                canvas.drawRect(0f, 0f, this.width, this.height, paint)
-            } else {
-                paint.color = Color.WHITE
-                paint.style = Paint.Style.STROKE
-                paint.strokeWidth = context.resources
-                    .getDimensionPixelSize(R.dimen.edge_add2cart_color_white).toFloat()
-                canvas.drawRect(0f, 0f, this.width, this.height, paint)
+            paint.color = Color.WHITE
+            paint.style = Paint.Style.STROKE
+            paint.strokeWidth = context.resources
+                .getDimensionPixelSize(R.dimen.edge_add2cart_color_white).toFloat()
+            canvas.drawRect(0f, 0f, this.width, this.height, paint)
 
-                paint.color = Color.BLACK
-                paint.style = Paint.Style.STROKE
-                paint.strokeWidth = context.resources
-                    .getDimensionPixelSize(R.dimen.edge_add2cart_color_black).toFloat()
-                canvas.drawRect(0f, 0f, this.width, this.height, paint)
-            }
+            paint.color = Color.BLACK
+            paint.style = Paint.Style.STROKE
+            paint.strokeWidth = context.resources
+                .getDimensionPixelSize(R.dimen.edge_add2cart_color_black).toFloat()
+            canvas.drawRect(0f, 0f, this.width, this.height, paint)
         }
     }
 })

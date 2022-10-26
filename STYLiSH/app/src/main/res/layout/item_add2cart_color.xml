@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="color"
+            type="com.yazhiyue.stylish.data.Color" />
+
+        <variable
+            name="viewHolder"
+            type="com.yazhiyue.stylish.add2cart.Add2cartColorAdapter.ColorViewHolder" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_color_block"
+            android:layout_width="@dimen/size_add2cart_select"
+            android:layout_height="@dimen/size_add2cart_select"
+            android:layout_marginEnd="16dp"
+            app:color="@{color}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:selected="@{viewHolder.isSelected}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

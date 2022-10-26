@@ -23,7 +23,20 @@
     <dimen name="edge_detail_color">1dp</dimen>
     <dimen name="size_back_button">44dp</dimen>
 
+    <!-- Add2Cart Dialog -->
     <dimen name="edge_add2cart_color_white">8dp</dimen>
     <dimen name="edge_add2cart_color_black">2dp</dimen>
+    <dimen name="height_add2cart">532dp</dimen>
+    <dimen name="height_add2cart_select_amount">48dp</dimen>
+    <dimen name="size_add2cart_select">48dp</dimen>
+    <dimen name="edge_add2cart_color">1dp</dimen>
+    <dimen name="edge_add2cart_select">2dp</dimen>
+    <dimen name="space_add2cart_select">16dp</dimen>
+
+    <!-- Cart -->
+    <dimen name="edge_cart_select">2dp</dimen>
+
+    <!-- IMessage Dialog -->
+    <dimen name="size_message">123dp</dimen>
 
 </resources>

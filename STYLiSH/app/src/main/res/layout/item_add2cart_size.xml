@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="variant"
+            type="com.yazhiyue.stylish.data.Variant" />
+
+        <variable
+            name="viewHolder"
+            type="com.yazhiyue.stylish.add2cart.Add2cartSizeAdapter.SizeViewHolder" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_add2cart_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_size"
+            android:layout_width="@dimen/size_add2cart_select"
+            android:layout_height="@dimen/size_add2cart_select"
+            android:layout_marginEnd="16dp"
+            android:background="@color/gray_f0f0f0"
+            android:gravity="center"
+            android:letterSpacing="0.15"
+            android:text="@{variant.size}"
+            android:textColor="@{variant.stock == 0 ? @color/gray_999999 : @color/black_3f3a3a}"
+            android:textSize="16sp"
+            app:fontFamily="@font/noto_sans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:selected="@{viewHolder.isSelected}"
+            tools:text="XS" />
+
+        <ImageView
+            android:id="@+id/image_no_size"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{variant.stock == 0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/text_size"
+            app:layout_constraintEnd_toEndOf="@+id/text_size"
+            app:layout_constraintStart_toStartOf="@+id/text_size"
+            app:layout_constraintTop_toTopOf="@+id/text_size"
+            app:srcCompat="@drawable/image_strikethrough" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

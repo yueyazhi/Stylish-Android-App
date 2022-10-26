@@ -38,14 +38,36 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
     </fragment>
+
     <fragment
         android:id="@+id/DetailFragment"
         android:name="com.yazhiyue.stylish.detail.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment">
         <argument
             android:name="productKey"
-            app:argType="com.yazhiyue.stylish.data.Product" />
-
+            app:argType="com.yazhiyue.stylish.data.Product"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_DetailFragment_to_add2cartDialog"
+            app:destination="@id/Add2cartDialog" />
     </fragment>
+
+    <dialog
+        android:id="@+id/Add2cartDialog"
+        android:name="com.yazhiyue.stylish.add2cart.Add2cartDialog"
+        android:label="Add2cartDialog">
+        <argument
+            android:name="productKey"
+            app:argType="com.yazhiyue.stylish.data.Product"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_Add2cartDialog_to_AddSuccessfullyDialog"
+            app:destination="@id/AddSuccessfullyDialog" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/AddSuccessfullyDialog"
+        android:name="com.yazhiyue.stylish.dialog.AddSuccessfullyDialog"
+        android:label="AddSuccessfullyDialog" />
 
 </navigation>
