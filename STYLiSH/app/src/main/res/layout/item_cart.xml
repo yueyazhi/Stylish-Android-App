@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="product"
+            type="com.yazhiyue.stylish.data.Product" />
+
+        <variable
+            name="viewModel"
+            type="com.yazhiyue.stylish.cart.CartViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_main"
+            android:layout_width="82dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/image_placeholder"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{product.mainImage}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/image_placeholder" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans"
+            android:maxLines="2"
+            android:text="@{product.title}"
+            android:textColor="@color/black_3f3a3a"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/image_main"
+            app:layout_constraintTop_toTopOf="@+id/image_main"
+            tools:text="厚實毛呢格子外套" />
+
+        <TextView
+            android:id="@+id/text_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:letterSpacing="0.15"
+            android:onClick="@{() -> viewModel.removeProduct(product)}"
+            android:text="@string/remove"
+            android:textColor="@drawable/cart_text_remove_selector"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_color"
+            android:layout_width="@dimen/size_cart_color"
+            android:layout_height="@dimen/size_cart_color"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/image_placeholder"
+            android:scaleType="centerCrop"
+            app:colorCode="@{product.selectedVariant.colorCode}"
+            app:layout_constraintStart_toStartOf="@+id/text_title"
+            app:layout_constraintTop_toBottomOf="@+id/text_title"
+            tools:src="@drawable/image_placeholder" />
+
+        <View
+            android:id="@+id/view_separation"
+            android:layout_width="1dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/gray_cccccc"
+            app:layout_constraintBottom_toBottomOf="@+id/image_color"
+            app:layout_constraintStart_toEndOf="@+id/image_color"
+            app:layout_constraintTop_toTopOf="@+id/image_color" />
+
+        <TextView
+            android:id="@+id/text_size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/noto_sans"
+            android:gravity="center"
+            android:letterSpacing="0.15"
+            android:text="@{product.selectedVariant.size}"
+            android:textColor="@color/black_3f3a3a"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_separation"
+            app:layout_constraintStart_toEndOf="@+id/view_separation"
+            app:layout_constraintTop_toTopOf="@+id/view_separation"
+            tools:text="XL" />
+
+        <TextView
+            android:id="@+id/text_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans"
+            android:maxLines="1"
+            android:text="@{`NT$ ` + Integer.toString(product.price)}"
+            android:textColor="@color/black_3f3a3a"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_size"
+            tools:text="NT$2140" />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_add"
+            android:layout_width="@dimen/size_cart_select"
+            android:layout_height="@dimen/size_cart_select"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_add"
+            android:onClick="@{() -> viewModel.increaseAmount(product)}"
+            app:editorControllerStatus="@{product.quantity &lt; product.selectedVariant.stock}"
+            app:layout_constraintStart_toStartOf="@+id/image_color"
+            app:layout_constraintTop_toBottomOf="@+id/image_color" />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_sub"
+            android:layout_width="@dimen/size_cart_select"
+            android:layout_height="@dimen/size_cart_select"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_sub"
+            android:onClick="@{() -> viewModel.decreaseAmount(product)}"
+            app:editorControllerStatus="@{product.selectedVariant.stock > 1 &amp;&amp; product.quantity > 1}"
+            app:layout_constraintStart_toStartOf="@+id/image_color"
+            app:layout_constraintTop_toBottomOf="@+id/image_color" />
+
+        <TextView
+            android:id="@+id/text_quantity"
+            android:layout_width="@dimen/width_cart_select_amount"
+            android:layout_height="@dimen/height_cart_select_amount"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_sans"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@{String.valueOf(product.quantity)}"
+            android:textColor="@color/black_3f3a3a"
+            android:textSize="16sp"
+            app:amount="@{product.quantity}"
+            app:layout_constraintStart_toStartOf="@+id/image_color"
+            app:layout_constraintTop_toBottomOf="@+id/image_color"
+            app:stock="@{product.selectedVariant.stock}"
+            tools:text="1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

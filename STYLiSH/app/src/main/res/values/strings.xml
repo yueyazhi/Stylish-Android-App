@@ -37,4 +37,11 @@
 
     <!-- IMessage Dialog -->
     <string name="add_success">加入成功</string>
+    <string name="add_fail">此商品已存在在購物車中</string>
+
+    <!-- Cart -->
+    <string name="goto_checkout">前往結帳</string>
+    <string name="remove">移除</string>
+    <string name="no_products">目前購物車沒有商品。</string>
+    <string name="product_exist">此商品已存在購物車中。</string>
 </resources>

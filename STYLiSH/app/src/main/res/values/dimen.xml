@@ -35,6 +35,10 @@
 
     <!-- Cart -->
     <dimen name="edge_cart_select">2dp</dimen>
+    <dimen name="size_cart_color">22dp</dimen>
+    <dimen name="size_cart_select">32dp</dimen>
+    <dimen name="height_cart_select_amount">32dp</dimen>
+    <dimen name="width_cart_select_amount">86dp</dimen>
 
     <!-- IMessage Dialog -->
     <dimen name="size_message">123dp</dimen>

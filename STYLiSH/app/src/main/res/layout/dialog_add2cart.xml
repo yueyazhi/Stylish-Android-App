@@ -238,6 +238,7 @@
             android:layout_marginBottom="16dp"
             android:background="@{viewModel.selectedVariant == null ? @color/gray_999999 : viewModel.quantity &lt;= viewModel.selectedVariant.stock ? @color/black_3f3a3a : @color/gray_999999}"
             android:clickable="@{viewModel.selectedVariant == null ? false : viewModel.quantity &lt;= viewModel.selectedVariant.stock ? true : false}"
+            android:onClick="@{() -> viewModel.insertToCart()}"
             android:text="@string/add2cart"
             android:textColor="@color/white"
             android:textSize="16sp"

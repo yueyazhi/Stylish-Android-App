@@ -13,7 +13,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.yazhiyue.stylish.R
+import com.yazhiyue.stylish.data.source.local.StylishDatabase
 import com.yazhiyue.stylish.databinding.DialogAdd2cartBinding
+import com.yazhiyue.stylish.dialog.MessageDialog
 import com.yazhiyue.stylish.factory.Add2cartViewModelFactory
 
 class Add2cartDialog : BottomSheetDialogFragment() {
@@ -36,9 +38,13 @@ class Add2cartDialog : BottomSheetDialogFragment() {
 
         binding.lifecycleOwner = this
 
+        val application = requireNotNull(activity).application
+
         val product = Add2cartDialogArgs.fromBundle(requireArguments()).productKey
 
-        val viewModelFactory = Add2cartViewModelFactory(product)
+        val databaseDao = StylishDatabase.getInstance(application).stylishDatabaseDao
+
+        val viewModelFactory = Add2cartViewModelFactory(product, databaseDao)
 
         val viewModel = ViewModelProvider(
             this, viewModelFactory
@@ -67,12 +73,37 @@ class Add2cartDialog : BottomSheetDialogFragment() {
             }
         })
 
-        binding.buttonAddToCart.setOnClickListener {
-            if (it.isClickable) {
-                this.findNavController()
-                    .navigate(Add2cartDialogDirections.actionAdd2cartDialogToAddSuccessfullyDialog())
+        // Handle navigation to Added Success
+        viewModel.navigateToAddedSuccess.observe(
+            viewLifecycleOwner,
+            Observer {
+                it?.let {
+                    this.findNavController()
+                        .navigate(
+                            Add2cartDialogDirections.actionAdd2cartDialogToAddSuccessfullyDialog(
+                                MessageDialog.MessageType.ADDED_SUCCESS
+                            )
+                        )
+                    viewModel.onAddedSuccessNavigated()
+                }
             }
-        }
+        )
+
+        // Handle navigation to Added Fail
+        viewModel.navigateToAddedFail.observe(
+            viewLifecycleOwner,
+            Observer {
+                it?.let {
+                    this.findNavController()
+                        .navigate(
+                            Add2cartDialogDirections.actionAdd2cartDialogToAddSuccessfullyDialog(
+                                MessageDialog.MessageType.ADDED_FAIL
+                            )
+                        )
+                    viewModel.onAddedFailNavigated()
+                }
+            }
+        )
 
 
         return binding.root

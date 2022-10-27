@@ -118,3 +118,10 @@ fun bindEditorControllerStatus(imageButton: ImageButton, enabled: Boolean) {
         )
     }
 }
+
+@BindingAdapter("colorCode")
+fun bindColorByColorCode(imageView: ImageView, colorCode: String?) {
+    colorCode?.let {
+        imageView.background = ColorSquare("#$colorCode", imageView.context)
+    }
+}

@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/bg_badge_main.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/bg_dialog_corner.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/bg_message.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/bottom_nav_item_selector.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/button_profile_order_ripple.xml" value="0.1" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/cart_text_remove_selector.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/dialog_add2cart_background.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/ic_nav_cart_selector.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/ic_nav_catalog_selector.xml" value="0.1" />
@@ -15,10 +17,11 @@
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/drawable/icon_arrow_right_gray_646464_20dp.xml" value="0.1" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout-v24/activity_main.xml" value="0.2" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/activity_main.xml" value="0.15040650406504066" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/badge_bottom.xml" value="0.12132725430597771" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/dialog_add2cart.xml" value="0.2484375" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/dialog_add_successfully.xml" value="0.129981884057971" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/dialog_message.xml" value="0.2047008547008547" />
-        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_cart.xml" value="0.1" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_cart.xml" value="0.2" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_catalog.xml" value="0.11322188449848024" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_catalog_item.xml" value="0.2" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_detail.xml" value="0.264" />
@@ -26,6 +29,7 @@
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/fragment_profile.xml" value="0.25263157894736843" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_add2cart_color.xml" value="0.2484375" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_add2cart_size.xml" value="0.18614130434782608" />
+        <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_cart.xml" value="0.20969202898550723" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_catalog_grid.xml" value="0.2" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_detail_color.xml" value="0.12132725430597771" />
         <entry key="..\:/Stylish-Android-App/STYLiSH/app/src/main/res/layout/item_detail_gallery.xml" value="0.12082066869300911" />

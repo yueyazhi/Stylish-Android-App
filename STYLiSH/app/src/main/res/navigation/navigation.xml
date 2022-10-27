@@ -67,7 +67,11 @@
 
     <dialog
         android:id="@+id/AddSuccessfullyDialog"
-        android:name="com.yazhiyue.stylish.dialog.AddSuccessfullyDialog"
-        android:label="AddSuccessfullyDialog" />
+        android:name="com.yazhiyue.stylish.dialog.MessageDialog"
+        android:label="AddSuccessfullyDialog" >
+        <argument android:name="messageTypeKey"
+            app:argType="com.yazhiyue.stylish.dialog.MessageDialog$MessageType"
+            app:nullable="false"/>
+    </dialog>
 
 </navigation>
