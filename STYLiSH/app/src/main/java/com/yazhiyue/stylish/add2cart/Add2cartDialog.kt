@@ -80,7 +80,7 @@ class Add2cartDialog : BottomSheetDialogFragment() {
                 it?.let {
                     this.findNavController()
                         .navigate(
-                            Add2cartDialogDirections.actionAdd2cartDialogToAddSuccessfullyDialog(
+                            Add2cartDialogDirections.actionAdd2cartDialogToMessageDialog(
                                 MessageDialog.MessageType.ADDED_SUCCESS
                             )
                         )
@@ -96,7 +96,7 @@ class Add2cartDialog : BottomSheetDialogFragment() {
                 it?.let {
                     this.findNavController()
                         .navigate(
-                            Add2cartDialogDirections.actionAdd2cartDialogToAddSuccessfullyDialog(
+                            Add2cartDialogDirections.actionAdd2cartDialogToMessageDialog(
                                 MessageDialog.MessageType.ADDED_FAIL
                             )
                         )

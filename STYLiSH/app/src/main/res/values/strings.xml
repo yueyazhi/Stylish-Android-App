@@ -44,4 +44,43 @@
     <string name="remove">移除</string>
     <string name="no_products">目前購物車沒有商品。</string>
     <string name="product_exist">此商品已存在購物車中。</string>
+
+    <!-- Payment -->
+    <string name="_payment_quantity">x%d</string>
+    <string name="checkout_product">結帳商品</string>
+    <string name="recipient_info">收件資訊</string>
+    <string name="recipient_name">收件人姓名</string>
+    <string name="recipient_email">Email</string>
+    <string name="recipient_phone">手機號碼</string>
+    <string name="recipient_address">地址</string>
+    <string name="shipping_time">配送時間</string>
+    <string name="shipping_morning">08:00-12:00</string>
+    <string name="shipping_afternoon">14:00-18:00</string>
+    <string name="shipping_anytime">不指定</string>
+    <string name="payment_detail">付款詳情</string>
+    <string name="cash_on_delivery">貨到付款</string>
+    <string name="credit_card">信用卡付款</string>
+    <string name="select_payment_method">選擇付款方式</string>
+    <string name="total_price">商品總金額</string>
+    <string name="total_freight">運費總金額</string>
+    <string name="total">總計</string>
+    <string name="total_products">樣商品</string>
+    <string name="tpd_card_number_error">Invalid Card Number</string>
+    <string name="tpd_expiration_date_error">Invalid Expiration Date</string>
+    <string name="tpd_ccv_error">Invalid CCV</string>
+    <string name="tpd_empty">Credit Card cannot be empty</string>
+    <string name="tpd_general_error">Credit Card information error</string>
+    <string name="no_pay_by_cash">目前不支援貨到付款喔 ^.&#60;</string>
+    <string name="freight_price">NT$60</string>
+
+    <!-- Check Out Key -->
+    <string name="tp_app_id">12348</string>
+    <string name="tp_app_key">app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF</string>
+    <string name="morning">morning</string>
+    <string name="afternoon">afternoon</string>
+    <string name="anytime">anytime</string>
+
+    <!-- Check Out -->
+    <string name="checkout_success">結帳成功</string>
+
 </resources>

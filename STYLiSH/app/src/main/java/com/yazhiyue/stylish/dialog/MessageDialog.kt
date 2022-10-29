@@ -44,7 +44,8 @@ class MessageDialog : DialogFragment() {
 
     enum class MessageType(val message: Int, val iconRes: Int? = null) {
         ADDED_SUCCESS(R.string.add_success, R.drawable.icons_44px_success01),
-        ADDED_FAIL(R.string.add_fail)
+        ADDED_FAIL(R.string.add_fail),
+        CHECKOUT_SUCCESS(R.string.checkout_success, R.drawable.icons_44px_success01)
     }
 
 

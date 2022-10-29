@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <import type="com.yazhiyue.stylish.network.LoadApiStatus" />
+
+        <import type="com.yazhiyue.stylish.payment.PaymentMethod" />
+
+        <variable
+            name="viewModel"
+            type="com.yazhiyue.stylish.payment.PaymentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_payment_recipient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/view_recipient_separation"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/gray_cccccc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_recipient_info_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/noto_sans_bold"
+                android:letterSpacing="0.15"
+                android:text="@string/recipient_info"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_recipient_separation" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_recipient_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.name) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}"
+                app:errorEnabled="true"
+                app:hintTextColor="@color/gray_646464"
+                app:isEmpty="@{viewModel.invalidCheckout != null &amp; TextUtils.isEmpty(viewModel.name)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_recipient_info_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_recipient_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_payment_editor"
+                    android:hint="@string/recipient_name"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:nextFocusForward="@+id/edit_payment_recipient_email"
+                    android:singleLine="true"
+                    android:text="@={viewModel.name}"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textColorHint="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.name) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_recipient_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.email) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}"
+                app:errorEnabled="true"
+                app:hintTextColor="@color/gray_646464"
+                app:isEmpty="@{viewModel.invalidCheckout != null &amp; TextUtils.isEmpty(viewModel.email)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_recipient_name">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_recipient_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_payment_editor"
+                    android:hint="@string/recipient_email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:nextFocusForward="@+id/edit_recipient_phone"
+                    android:singleLine="true"
+                    android:text="@={viewModel.email}"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textColorHint="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.email) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_recipient_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.phone) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}"
+                app:errorEnabled="true"
+                app:hintTextColor="@color/gray_646464"
+                app:isEmpty="@{viewModel.invalidCheckout != null &amp; TextUtils.isEmpty(viewModel.phone)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_recipient_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_recipient_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_payment_editor"
+                    android:ems="10"
+                    android:hint="@string/recipient_phone"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:nextFocusForward="@+id/edit_payment_recipient_address"
+                    android:singleLine="true"
+                    android:text="@={viewModel.phone}"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textColorHint="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.phone) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/phone_example_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="1dp"
+                android:text="例:0912345678"
+                android:textColor="#646464"
+                android:textSize="14sp"
+                app:fontFamily="@font/noto_sans"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_recipient_phone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_recipient_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.address) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}"
+                app:errorEnabled="true"
+                app:hintTextColor="@color/gray_646464"
+                app:isEmpty="@{viewModel.invalidCheckout != null &amp; TextUtils.isEmpty(viewModel.address)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_recipient_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edit_recipient_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_payment_editor"
+                    android:hint="@string/recipient_address"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPostalAddress"
+                    android:maxLines="1"
+                    android:nextFocusForward="@+id/form_payment_tpd"
+                    android:singleLine="true"
+                    android:text="@={viewModel.address}"
+                    android:textColor="@color/black_3f3a3a"
+                    android:textColorHint="@{viewModel.invalidCheckout != null ? (TextUtils.isEmpty(viewModel.address) ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_shipping_time_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="42dp"
+                android:fontFamily="@font/noto_sans"
+                android:letterSpacing="0.15"
+                android:text="@string/shipping_time"
+                android:textColor="@{viewModel.invalidCheckout != null ? (viewModel.selectedTimeRadio == 0 ? @color/red_d0021b : @color/gray_646464) : @color/gray_646464}"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_recipient_address" />
+
+            <RadioGroup
+                android:id="@+id/radios_shipping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="24dp"
+                android:checkedButton="@={viewModel.selectedTimeRadio}"
+                android:theme="@style/PaymentColorTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_shipping_time_title">
+
+                <RadioButton
+                    android:id="@+id/radio_shipping_morning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:letterSpacing="0.15"
+                    android:tag="@string/morning"
+                    android:text="@string/shipping_morning"
+                    android:textColor="@{viewModel.invalidCheckout != null ? (viewModel.selectedTimeRadio == 0 ? @color/red_d0021b : @color/black_3f3a3a) : @color/black_3f3a3a}"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_shipping_afternoon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:letterSpacing="0.15"
+                    android:tag="@string/afternoon"
+                    android:text="@string/shipping_afternoon"
+                    android:textColor="@{viewModel.invalidCheckout != null ? (viewModel.selectedTimeRadio == 0 ? @color/red_d0021b : @color/black_3f3a3a) : @color/black_3f3a3a}"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_shipping_anytime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:letterSpacing="0.15"
+                    android:tag="@string/anytime"
+                    android:text="@string/shipping_anytime"
+                    android:textColor="@{viewModel.invalidCheckout != null ? (viewModel.selectedTimeRadio == 0 ? @color/red_d0021b : @color/black_3f3a3a) : @color/black_3f3a3a}"
+                    android:textSize="16sp" />
+
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_payment_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_payment_recipient">
+
+            <View
+                android:id="@+id/view_payment_method_separation"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/gray_cccccc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_payment_method_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/noto_sans_bold"
+                android:letterSpacing="0.15"
+                android:text="@string/payment_detail"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_payment_method_separation" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_payment_methods"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_payment_editor"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:prompt="@string/select_payment_method"
+                android:selectedItemPosition="@={viewModel.selectedPaymentMethodPosition}"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_payment_method_title" />
+
+            <tech.cherri.tpdirect.api.TPDForm
+                android:id="@+id/form_payment_tpd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:imeOptions="actionDone"
+                android:theme="@style/PaymentColorTheme"
+                android:visibility="@{viewModel.paymentMethod == PaymentMethod.CREDIT_CARD ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_payment_methods">
+
+            </tech.cherri.tpdirect.api.TPDForm>
+
+            <TextView
+                android:id="@+id/text_total_price_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:letterSpacing="0.15"
+                android:text="@string/total_price"
+                android:textColor="@color/gray_646464"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/form_payment_tpd" />
+
+            <TextView
+                android:id="@+id/text_total_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:letterSpacing="0.15"
+                android:text="@{`NT$` + Integer.toString(viewModel.totalPrice)}"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/text_total_price_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_total_price_title"
+                tools:text="NT$9527" />
+
+
+            <TextView
+                android:id="@+id/text_total_freight_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:letterSpacing="0.15"
+                android:text="@string/total_freight"
+                android:textColor="@color/gray_646464"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_total_price_title" />
+
+            <TextView
+                android:id="@+id/text_freight_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/noto_sans"
+                android:letterSpacing="0.15"
+                android:text="@string/freight_price"
+                android:textColor="@color/black_3f3a3a"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/text_total_freight_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_total_freight_title" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_payment_total_products"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_payment_editor"
+                android:layout_marginTop="24dp"
+                android:background="@color/black_3f3a3a"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_total_freight_title">
+
+                <TextView
+                    android:id="@+id/text_total_products_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="0.15"
+                    android:text="@{@string/total + `(` + Integer.toString(viewModel.products.size) + @string/total_products + `)`}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/total_products" />
+
+                <TextView
+                    android:id="@+id/text_total_products"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/noto_sans"
+                    android:letterSpacing="0.15"
+                    android:text="@{`NT$` + Integer.toString(viewModel.totalOrderPrice)}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="NT$9527" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_payment_bottom"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/height_all_bottom_layout"
+                android:background="@color/white"
+                android:elevation="@dimen/elevation_all"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_payment_total_products">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_payment_checkout"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/black_3f3a3a"
+                    android:letterSpacing="0.15"
+                    android:onClick="@{() -> viewModel.prepareCheckout()}"
+                    android:text="@string/goto_checkout"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.yazhiyue.stylish.R
 import com.yazhiyue.stylish.data.source.local.StylishDatabase
 import com.yazhiyue.stylish.databinding.FragmentCartBinding
@@ -50,6 +51,16 @@ class CartFragment : Fragment() {
                 binding.recyclerCart.adapter?.notifyDataSetChanged()
             }
         })
+
+        viewModel.navigateToPayment.observe(
+            viewLifecycleOwner,
+            Observer {
+                it?.let {
+                    findNavController().navigate(CartFragmentDirections.actionCartFragmentToPaymentFragment())
+                    viewModel.onPaymentNavigated()
+                }
+            }
+        )
 
 
         return binding.root

@@ -6,21 +6,26 @@ import android.graphics.Paint
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.Shape
 import android.os.Build
+import android.text.TextUtils
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.textfield.TextInputLayout
 import com.yazhiyue.stylish.R
 import com.yazhiyue.stylish.component.ColorSquare
 import com.yazhiyue.stylish.component.SizeSquare
 import com.yazhiyue.stylish.data.Color
 import com.yazhiyue.stylish.data.HomeItem
 import com.yazhiyue.stylish.home.HomeAdapter
+import com.yazhiyue.stylish.payment.PaymentViewModel
+
 
 @BindingAdapter("homeItems")
 fun bindRecyclerViewWithHomeItems(recyclerView: RecyclerView, homeItems: List<HomeItem>?) {
@@ -123,5 +128,14 @@ fun bindEditorControllerStatus(imageButton: ImageButton, enabled: Boolean) {
 fun bindColorByColorCode(imageView: ImageView, colorCode: String?) {
     colorCode?.let {
         imageView.background = ColorSquare("#$colorCode", imageView.context)
+    }
+}
+
+@BindingAdapter("isEmpty")
+fun setEmptyErrorMessage(view: TextInputLayout, isEmpty: Boolean) {
+    if (isEmpty) {
+        view.error = "此欄位不能空白"
+    } else {
+        view.error = null
     }
 }

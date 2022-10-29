@@ -1,22 +1,22 @@
 package com.yazhiyue.stylish.factory
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.yazhiyue.stylish.MainViewModel
-import com.yazhiyue.stylish.cart.CartViewModel
 import com.yazhiyue.stylish.data.source.local.StylishDatabaseDao
 import com.yazhiyue.stylish.payment.PaymentViewModel
 
-class ViewModelFactory(
-    private val databaseDao: StylishDatabaseDao
+class PaymentViewModelFactory(
+    private val databaseDao: StylishDatabaseDao,
+    private val application: Application
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
-            return MainViewModel(databaseDao) as T
-        } else if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
-            return CartViewModel(databaseDao) as T
+        if (modelClass.isAssignableFrom(PaymentViewModel::class.java)) {
+            return PaymentViewModel(databaseDao, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
+
 }
+

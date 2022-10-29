@@ -30,6 +30,9 @@
         android:name="com.yazhiyue.stylish.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_CartFragment_to_PaymentFragment"
+            app:destination="@id/PaymentFragment" />
     </fragment>
 
     <fragment
@@ -61,17 +64,25 @@
             app:argType="com.yazhiyue.stylish.data.Product"
             app:nullable="false" />
         <action
-            android:id="@+id/action_Add2cartDialog_to_AddSuccessfullyDialog"
-            app:destination="@id/AddSuccessfullyDialog" />
+            android:id="@+id/action_Add2cartDialog_to_MessageDialog"
+            app:destination="@id/MessageDialog" />
     </dialog>
 
     <dialog
-        android:id="@+id/AddSuccessfullyDialog"
+        android:id="@+id/MessageDialog"
         android:name="com.yazhiyue.stylish.dialog.MessageDialog"
         android:label="AddSuccessfullyDialog" >
         <argument android:name="messageTypeKey"
             app:argType="com.yazhiyue.stylish.dialog.MessageDialog$MessageType"
             app:nullable="false"/>
     </dialog>
+    <fragment
+        android:id="@+id/PaymentFragment"
+        android:name="com.yazhiyue.stylish.payment.PaymentFragment"
+        android:label="PaymentFragment" >
+        <action
+            android:id="@+id/action_PaymentFragment_to_MessageDialog"
+            app:destination="@id/MessageDialog" />
+    </fragment>
 
 </navigation>
